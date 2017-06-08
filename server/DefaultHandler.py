@@ -17,7 +17,6 @@ class DefaultHandler(tornado.web.RequestHandler):
         self.write(response)
 
     def post(self):
-        print ("ss")
         try:
             logging.debug("Got request: %s" % self.request.body)
             update = tornado.escape.json_decode(self.request.body)
