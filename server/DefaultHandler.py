@@ -29,7 +29,8 @@ class DefaultHandler(tornado.web.RequestHandler):
             if text:
                 logging.info("MESSAGE\t%s\t%s" % (message['chat']['id'], text))
 
-                if "нахуй алика" in codecs.decode(text, 'unicode_escape'):
+                if "нахуй алика" in codecs.decode(text, 'unicode_escape') or
+                        "нахуй алика" in text:
                     send_reply(
                         message['chat']['id'],
                         "Александру Максимовичу Авдееву следует пойти нахуй")
