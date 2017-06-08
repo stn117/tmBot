@@ -1,9 +1,9 @@
 import tornado.httpserver
 import tornado.ioloop
 import tornado.web
-import requests
 import signal
 import logging
+import sys
 
 from .DefaultHandler import DefaultHandler
 from .config import *

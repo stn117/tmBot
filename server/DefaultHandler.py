@@ -3,12 +3,15 @@ import tornado
 import json
 
 from .config import *
-from.globals import api
+from .globals import api
 
 
-def send_reply(response):
+def send_reply(chat_id, response):
     if 'text' in response:
-        api.post(URL + "sendMessage", data=response)
+        api.post(URL + "sendMessage", data={
+            "chat_id": chat_id,
+            "text": response
+        })
 
 
 class DefaultHandler(tornado.web.RequestHandler):
@@ -25,12 +28,18 @@ class DefaultHandler(tornado.web.RequestHandler):
             if text:
                 logging.info("MESSAGE\t%s\t%s" % (message['chat']['id'], text))
 
+                if "нахуй алика" in text:
+                    send_reply(
+                        message['chat']['id'],
+                        "Александру Максимовичу Авдееву следует пойти нахуй")
+                    return
+
                 if text[0] == '/':
                     # command, *arguments = text.split(" ", 1)
                     # response = CMD.get(command, not_found)(arguments, message)
                     response = "sexy"
                     logging.info("REPLY\t%s\t%s" % (message['chat']['id'], response))
-                    send_reply(response)
+                    send_reply(message['chat']['id'], response)
         except Exception as e:
             logging.warning(str(e))
 
