@@ -9,7 +9,7 @@ from .globals import api
 
 def send_reply(chat_id, response):
     logging.info("REPLY\t%s\t%s" % (chat_id, response))
-    api.post(URL + "sendMessage", data={
+    api.post(BOT_URL + "sendMessage", data={
         "chat_id": chat_id,
         "text": response
     })
