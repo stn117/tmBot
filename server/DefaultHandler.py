@@ -1,6 +1,7 @@
 import logging
 import tornado
 import json
+import codecs
 
 from .config import *
 from .globals import api
@@ -28,7 +29,7 @@ class DefaultHandler(tornado.web.RequestHandler):
             if text:
                 logging.info("MESSAGE\t%s\t%s" % (message['chat']['id'], text))
 
-                if "нахуй алика" in text:
+                if "нахуй алика" in codecs.decode(text, 'unicode_escape'):
                     send_reply(
                         message['chat']['id'],
                         "Александру Максимовичу Авдееву следует пойти нахуй")
