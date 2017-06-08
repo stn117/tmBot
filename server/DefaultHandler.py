@@ -8,11 +8,11 @@ from .globals import api
 
 
 def send_reply(chat_id, response):
-    if 'text' in response:
-        api.post(URL + "sendMessage", data={
-            "chat_id": chat_id,
-            "text": response
-        })
+    logging.info("REPLY\t%s\t%s" % (chat_id, response))
+    api.post(URL + "sendMessage", data={
+        "chat_id": chat_id,
+        "text": response
+    })
 
 
 class DefaultHandler(tornado.web.RequestHandler):
