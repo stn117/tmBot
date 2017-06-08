@@ -1,0 +1,8 @@
+{
+  "name": "tmBot",
+  "description": "Hello I`m a first bot which was written by my myster.",
+  "image": "heroku/python",
+  "repository": "https://github.com/stn117/tmBot.git",
+  "keywords": ["python"],
+  "addons": []
+}
